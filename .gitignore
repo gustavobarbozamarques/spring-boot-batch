@@ -36,4 +36,4 @@ out/
 ### VS Code ###
 .vscode/
 # Default ignored files
-/workspace.xml
+/.idea/workspace.xml
