@@ -8,6 +8,7 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.file.FlatFileItemReader;
@@ -26,6 +27,7 @@ public class JobConfiguration {
     @Bean
     public Job importJob(JobBuilderFactory jobBuilderFactory, Step step1, Step step2) {
         return jobBuilderFactory.get("importJob")
+                .incrementer(new RunIdIncrementer())
                 .start(step1)
                 .next(step2)
                 .build();
