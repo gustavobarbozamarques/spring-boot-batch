@@ -47,7 +47,6 @@ public class JobConfiguration {
                 .processor(userItemProcessor)
                 .writer(userItemWriter)
                 .faultTolerant()
-                .skip(Exception.class)
                 .skipPolicy((ex, skipCount) -> {
                     log.info(ex.getMessage());
                     return true;
